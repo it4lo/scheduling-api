@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 //app.use(Authenticate);
 app.get('/', (req, res) => {
-    res.json({ ok: "ok" })
+    res.status(200).send()
 })
 
 app.use('/users', userRoutes);
@@ -22,5 +22,3 @@ app.use('/session', sessionRoutes);
 app.use('/images', express.static(path.resolve(__dirname, '..', 'utils', 'images')));
 
 export default app;
-
-

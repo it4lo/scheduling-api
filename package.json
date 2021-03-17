@@ -7,8 +7,9 @@
   "scripts": {
     "start": "node ./bin/index.js",
     "dev": "nodemon ./bin/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
+  
   "_moduleAliases": {
     "@models": "./model",
     "@middlewares": "./middlewares",
@@ -34,6 +35,11 @@
     "winston": "^3.3.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "@babel/core": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.4",
+    "supertest": "^6.1.3"
   }
 }
