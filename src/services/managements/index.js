@@ -1,1 +1,0 @@
-export {default as managementRoutes } from './routes'; 

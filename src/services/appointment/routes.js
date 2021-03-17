@@ -8,4 +8,5 @@ const upload = multer(multerConfig);
 export default express
 .Router()
 .get('/', controller.index)
-.post('/', upload.single('photoURL') ,controller.store);
+.post('/', upload.single('photoURL') ,controller.store)
+.put('/:id', upload.single('photoURL') ,controller.update);
