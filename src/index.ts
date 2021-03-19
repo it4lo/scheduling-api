@@ -1,1 +1,2 @@
-console.log('test');
+const { resolve } = require('path')
+console.log(resolve(__dirname, '..'));
