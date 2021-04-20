@@ -40,6 +40,7 @@ jobs:
               rm -rf /var/www/intra/source/client/build;
               cp ~/apps/intra/front/build/ /var/www/intra/source/client/;
 workflows:
+  version: 2
   ci-dploy:
     jobs:
       - build
