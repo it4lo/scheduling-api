@@ -6,17 +6,15 @@ export interface GoogleSchedulePointLocal {
 }
 
 export interface GoogleSchedulePoint {
-  readonly time: string;
-  readonly parts: GoogleSchedulePointLocal;
-  readonly project: GoogleSchedulePointLocal;
+  data: string;
 }
 
 export interface GoogleAppointmentResponse {
-  appointmentHours: GoogleSchedulePoint[];
+  appointmentDates: GoogleSchedulePoint[];
 }
 
 export interface AppointmentNormalized {
-  dateInit: string;
+  data: string;
 }
 
 export class GoogleSchedule {
@@ -35,11 +33,14 @@ export class GoogleSchedule {
   }
 
   private normalizeResponse(points: GoogleAppointmentResponse): AppointmentNormalized[] {
-    return points.appointmentHours.map(this.isValidPoint.bind(this)).map(point => ({ dateInit: point.data1 }));
+    return [];
   }
 
-  private isValidPoint(point: Partial<GoogleSchedulePoint>) {
-
+  private isValidPoint(point: Partial<GoogleSchedulePoint>): boolean {
+    
+    
+    
+    return true;
   }
 
 }

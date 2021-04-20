@@ -5,6 +5,9 @@ import { Request, Response } from 'express';
 export class AppointmentController {
   @Get('')
   public getAppointmentForLoggedUser(_: Request, res: Response): void {
+    
+
+    
     res.send([{ nome: 'Italo' }]);
   }
 }

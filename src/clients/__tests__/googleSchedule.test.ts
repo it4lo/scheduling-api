@@ -9,7 +9,7 @@ describe("Stormglass tests", () => {
     it("Normalize appointments", async () => {
         const initDate = "15/04/2021";
         const endDate = "12/12/2021";
-        axios.get = jest.fn().mockResolvedValue(appointmentGoogle);
+        axios.get = jest.fn().mockResolvedValue({data: appointmentGoogle});
         const googleSchedule = new GoogleSchedule(axios);
         const response = await googleSchedule.fetchPoints(initDate, endDate);
         expect(response).toEqual(appointmentNormalized);

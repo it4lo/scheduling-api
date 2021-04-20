@@ -1,0 +1,50 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:12.21.0
+      working_directory: ~/workspace
+      steps:
+        - checkout
+        - run: npm install
+        - run: npm run build
+        - persist_to_workspace:
+            root: /home/circleci/workspace
+            paths:
+            - .
+  deploy:
+    machine:
+      image: circleci/classic:latest
+      steps:
+        - attach_workspace:
+            at: ~/workspace
+        - add_ssh_key:
+            fingerprints:
+            - "050505"
+        - run:
+            name: "Deploy over SSH"
+            command: | 
+              export USER_HOST="root@104.131.11.225"
+              tar -cvf /tmp/build.tar.gz -C ~/workspace/build .
+              
+              ssh ${USER_HOST} '
+              cd ../; 
+              rm -Rf /var/www/intra/source/client/build';'
+
+            scp -r /tmp/build.tar.gz ${USER_HOST}:~/apps/intra/front/build.tar.gz
+            ssh ${USER_HOST} '
+              cd ~/apps/intra/front;
+              tar -xzf ./build.tar.gz;
+              cd ~;
+              cd ..; 
+              rm -rf /var/www/intra/source/client/build;
+              cp ~/apps/intra/front/build/ /var/www/intra/source/client/;
+workflows:
+  ci-dploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+     
+

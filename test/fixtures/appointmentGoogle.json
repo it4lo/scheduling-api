@@ -1,3 +1,7 @@
 {
-    "data": "inicio"
+    "appointmentDates": [
+        {
+            "data": "inicio"
+        }
+    ]
 }
