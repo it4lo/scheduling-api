@@ -15,30 +15,30 @@ jobs:
   deploy:
     machine:
       image: circleci/classic:latest
-      steps:
-        - attach_workspace:
-            at: ~/workspace
-        - add_ssh_key:
-            fingerprints:
-            - "050505"
-        - run:
-            name: "Deploy over SSH"
-            command: | 
-              export USER_HOST="root@104.131.11.225"
-              tar -cvf /tmp/build.tar.gz -C ~/workspace/build .
-              
-              ssh ${USER_HOST} '
-              cd ../; 
-              rm -Rf /var/www/intra/source/client/build';'
+    steps:
+      - attach_workspace:
+          at: ~/workspace
+      - add_ssh_key:
+          fingerprints:
+          - "050505"
+      - run:
+          name: "Deploy over SSH"
+          command: | 
+            export USER_HOST="root@104.131.11.225"
+            tar -cvf /tmp/build.tar.gz -C ~/workspace/build .
+            
+            ssh ${USER_HOST} '
+            cd ../; 
+            rm -Rf /var/www/intra/source/client/build';'
 
-              scp -r /tmp/build.tar.gz ${USER_HOST}:~/apps/intra/front/build.tar.gz
-              ssh ${USER_HOST} '
-              cd ~/apps/intra/front;
-              tar -xzf ./build.tar.gz;
-              cd ~;
-              cd ..; 
-              rm -rf /var/www/intra/source/client/build;
-              cp ~/apps/intra/front/build/ /var/www/intra/source/client/;
+            scp -r /tmp/build.tar.gz ${USER_HOST}:~/apps/intra/front/build.tar.gz
+            ssh ${USER_HOST} '
+            cd ~/apps/intra/front;
+            tar -xzf ./build.tar.gz;
+            cd ~;
+            cd ..; 
+            rm -rf /var/www/intra/source/client/build;
+            cp ~/apps/intra/front/build/ /var/www/intra/source/client/;
 workflows:
   version: 2
   ci-dploy:
