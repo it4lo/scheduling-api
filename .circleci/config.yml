@@ -22,9 +22,9 @@ jobs:
           at: ~/workspace
       - add_ssh_keys:
           fingerprints:
-          - "a7:9e:ca:8a:a9:e1:e8:c8:67:46:d6:b0:76:c7:35:30"
+          - "0f:81:0b:37:5a:1a:92:58:fa:c4:a3:76:b0:37:db:bb"
       - run:
-          name: "Deploy over SSH"
+          name: "Deploy"
           command: | 
             export USER_HOST="root@104.131.11.225"
             tar -czf /tmp/build.tar.gz -C ~/workspace/dist .
