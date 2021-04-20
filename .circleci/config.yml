@@ -31,8 +31,8 @@ jobs:
               cd ../; 
               rm -Rf /var/www/intra/source/client/build';'
 
-            scp -r /tmp/build.tar.gz ${USER_HOST}:~/apps/intra/front/build.tar.gz
-            ssh ${USER_HOST} '
+              scp -r /tmp/build.tar.gz ${USER_HOST}:~/apps/intra/front/build.tar.gz
+              ssh ${USER_HOST} '
               cd ~/apps/intra/front;
               tar -xzf ./build.tar.gz;
               cd ~;
