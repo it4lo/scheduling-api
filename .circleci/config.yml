@@ -18,7 +18,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/workspace
-      - add_ssh_key:
+      - add_ssh_keys:
           fingerprints:
           - "050505"
       - run:
