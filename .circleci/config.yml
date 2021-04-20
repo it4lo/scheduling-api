@@ -5,13 +5,13 @@ jobs:
       image: circleci/node:12.21.0
     working_directory: ~/workspace
     steps:
-        - checkout
-        - run: npm install
-        - run: npm run build
-        - persist_to_workspace:
-            root: /home/circleci/workspace
-            paths:
-            - .
+      - checkout
+      - run: npm install
+      - run: npm run build
+      - persist_to_workspace:
+          root: /home/circleci/workspace
+          paths:
+          - .
   deploy:
     machine:
       image: circleci/classic:latest
