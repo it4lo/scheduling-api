@@ -1,4 +1,8 @@
 version: 2
+
+orbs:
+  node: circleci/node@4.0.0
+
 jobs:
   build:
     docker:
@@ -6,8 +10,10 @@ jobs:
     working_directory: ~/workspace
     steps:
       - checkout
-      - run: npm install
-      - run: npm run build
+      - node/isntall:
+          isntall-yarn: true
+      - run: yarn isntall
+      - run: yarn build
       - persist_to_workspace:
           root: /home/circleci/workspace
           paths:
@@ -25,7 +31,7 @@ jobs:
           name: "Deploy over SSH"
           command: | 
             export USER_HOST="root@104.131.11.225"
-            tar -cvf /tmp/build.tar.gz -C ~/workspace/build .
+            tar -czf /tmp/build.tar.gz -C ~/workspace/dist .
             
             ssh ${USER_HOST} '
             cd ../; 
