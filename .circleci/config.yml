@@ -22,7 +22,7 @@ jobs:
           at: ~/workspace
       - add_ssh_keys:
           fingerprints:
-          - "050505"
+          - "a7:9e:ca:8a:a9:e1:e8:c8:67:46:d6:b0:76:c7:35:30"
       - run:
           name: "Deploy over SSH"
           command: | 
