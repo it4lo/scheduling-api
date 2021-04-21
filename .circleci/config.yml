@@ -1,4 +1,8 @@
 version: 2
+
+orbs:
+  node: circleci/node@4.0.0
+
 jobs:
   build:
     docker:
@@ -6,15 +10,15 @@ jobs:
     working_directory: ~/workspace
     steps:
       - checkout
-      - run: yarn 
+      - run: yarn isntall
       - run: yarn build
       - persist_to_workspace:
           root: /home/circleci/workspace
           paths:
           - .
   deploy:
-    docker:
-      image: arvindr226/alpine-ssh
+    machine:
+      image: circleci/classic:latest
     steps:
       - attach_workspace:
           at: ~/workspace
@@ -22,7 +26,7 @@ jobs:
           fingerprints:
           - "fa:2e:bd:ba:d0:b9:63:84:eb:35:97:8d:ec:8e:70:cf"
       - run:
-          name: "Deploy"
+          name: "Deploy over SSH"
           command: | 
             export USER_HOST="root@104.131.11.225"
             tar -czf /tmp/build.tar.gz -C ~/workspace/dist .
