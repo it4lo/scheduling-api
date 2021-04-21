@@ -30,15 +30,16 @@ jobs:
           command: | 
             export USER_HOST="root@104.131.11.225"
             tar -czf /tmp/dist.tar.gz -C ~/workspace/dist .
-          
-            scp -r /tmp/dist.tar.gz ${USER_HOST}:~/apps/intra/front/dist.tar.gz
             ssh ${USER_HOST} '
             rm -Rf /var/www/intra/source/client/build;
-            cd ~/apps/intra/front;
-            rm -Rf build;
-            mkdir build;
-            cd build;
+            rm -Rf ~/apps/intra/front/build;
+            mkdir ~/apps/intra/front/build;'
+
+            scp -r /tmp/dist.tar.gz ${USER_HOST}:~/apps/intra/front/build/dist.tar.gz
+            ssh ${USER_HOST} '
+            cd ~/apps/intra/front/build;
             tar -xzf ./dist.tar.gz;
+            rm -Rf ./dist.tar.gz;
             cd ~;
             cd ..;'
             
