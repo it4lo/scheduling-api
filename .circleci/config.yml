@@ -15,14 +15,14 @@ jobs:
           paths:
           - .
   deploy:
-    machine:
-      image: circleci/classic:latest
+    docker:
+      image: arvindr226/alpine-ssh
     steps:
       - attach_workspace:
           at: ~/workspace
       - add_ssh_keys:
           fingerprints:
-          - "0f:81:0b:37:5a:1a:92:58:fa:c4:a3:76:b0:37:db:bb"
+          - "fa:2e:bd:ba:d0:b9:63:84:eb:35:97:8d:ec:8e:70:cf"
       - run:
           name: "Deploy"
           command: | 
