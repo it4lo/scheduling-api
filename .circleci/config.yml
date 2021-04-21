@@ -41,7 +41,7 @@ jobs:
             tar -xzf ./dist.tar.gz;
             cd ~;
             cd ..; 
-            cp ~/apps/intra/front/dist/ /var/www/intra/source/client/;'
+            
 workflows:
   version: 2
   ci-dploy:
