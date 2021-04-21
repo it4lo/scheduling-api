@@ -25,6 +25,7 @@ jobs:
       - add_ssh_keys:
           fingerprints:
           - "fa:2e:bd:ba:d0:b9:63:84:eb:35:97:8d:ec:8e:70:cf"
+      - run: echo ${CIRCLE_BRANCH}
       - run:
           name: "Deploy over SSH"
           command: | 
