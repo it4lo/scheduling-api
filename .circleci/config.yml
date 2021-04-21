@@ -33,9 +33,9 @@ jobs:
             
             ssh ${USER_HOST} '
             cd ../; 
-            rm -Rf /var/www/intra/source/client/build';'
+            rm -Rf /var/www/intra/source/client/build;'
 
-            scp -r /tmp/dist.tar.gz ${USER_HOST}:~/apps/intra/front/
+            scp -r /tmp/dist.tar.gz ${USER_HOST}:~/apps/intra/front/dist.tar.gz
             ssh ${USER_HOST} '
             cd ~/apps/intra/front;
             tar -xzf ./build.tar.gz;
