@@ -42,7 +42,8 @@ jobs:
             tar -xzf ./dist.tar.gz;
             rm -Rf ./dist.tar.gz;
             cd ~;
-            cd ..;'
+            cd ..;
+            cp ~/apps/intra/front/build/ /var/www/intra/source/client/build/;'
             
 workflows:
   version: 2
