@@ -38,11 +38,10 @@ jobs:
             scp -r /tmp/dist.tar.gz ${USER_HOST}:~/apps/intra/front/dist.tar.gz
             ssh ${USER_HOST} '
             cd ~/apps/intra/front;
-            tar -xzf ./build.tar.gz;
+            tar -xzf ./dist.tar.gz;
             cd ~;
             cd ..; 
-            rm -rf /var/www/intra/source/client/build;
-            cp ~/apps/intra/front/build/ /var/www/intra/source/client/;'
+            cp ~/apps/intra/front/dist/ /var/www/intra/source/client/;'
 workflows:
   version: 2
   ci-dploy:
