@@ -43,7 +43,7 @@ jobs:
             rm -Rf ./dist.tar.gz;
             cd ~;
             cd ..;
-            cp ~/apps/intra/front/build/ /var/www/intra/source/client/build/;'
+            cp -r ~/apps/intra/front/build/ /var/www/intra/source/client/build/;'
             
 workflows:
   version: 2
