@@ -29,14 +29,11 @@ jobs:
           name: "Deploy over SSH"
           command: | 
             export USER_HOST="root@104.131.11.225"
-            tar -czf /tmp/.tar.gz -C ~/workspace/dist .
-            
-            ssh ${USER_HOST} '
-            cd ../; 
-            rm -Rf /var/www/intra/source/client/build;'
-
+            tar -czf /tmp/dist.tar.gz -C ~/workspace/dist .
+          
             scp -r /tmp/dist.tar.gz ${USER_HOST}:~/apps/intra/front/dist.tar.gz
             ssh ${USER_HOST} '
+            rm -Rf /var/www/intra/source/client/build;
             cd ~/apps/intra/front;
             rm -Rf build;
             tar -xzf ./dist.tar.gz build/;
