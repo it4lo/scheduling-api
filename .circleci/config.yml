@@ -10,7 +10,7 @@ jobs:
     working_directory: ~/workspace
     steps:
       - checkout
-      - run: yarn isntall
+      - run: yarn
       - run: yarn build
       - persist_to_workspace:
           root: /home/circleci/workspace
