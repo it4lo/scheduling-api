@@ -36,7 +36,8 @@ jobs:
             rm -Rf /var/www/intra/source/client/build;
             cd ~/apps/intra/front;
             rm -Rf build;
-            tar -xzf ./dist.tar.gz build/;
+            mkdir build;
+            tar -xzf ./dist.tar.gz /build;
             cd ~;
             cd ..;'
             
