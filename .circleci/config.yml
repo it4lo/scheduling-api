@@ -37,7 +37,8 @@ jobs:
             cd ~/apps/intra/front;
             rm -Rf build;
             mkdir build;
-            tar -xzf ./dist.tar.gz /build;
+            cd build;
+            tar -xzf ./dist.tar.gz;
             cd ~;
             cd ..;'
             
