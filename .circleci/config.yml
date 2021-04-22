@@ -32,12 +32,12 @@ jobs:
             export USER_HOST="root@104.131.11.225"
             tar -czf /tmp/dist.tar.gz -C ~/workspace/dist .
             ssh ${USER_HOST} '
-            rm -Rf ~/apps/api/scheduling/workspace;
-            mkdir ~/apps/api/scheduling/workspace;'
+            rm -Rf ~/apps/api/scheduling/workspace/;
+            mkdir ~/apps/api/scheduling/workspace/;'
 
             scp -r /tmp/dist.tar.gz ${USER_HOST}:~/apps/api/scheduling/workspace/dist.tar.gz
             ssh ${USER_HOST} '
-            cd ~/apps/api/scheduling/workspace;
+            cd ~/apps/api/scheduling/workspace/;
             tar -xzf ./dist.tar.gz;
             rm -Rf ./dist.tar.gz;'
             
