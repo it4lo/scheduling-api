@@ -32,18 +32,14 @@ jobs:
             export USER_HOST="root@104.131.11.225"
             tar -czf /tmp/dist.tar.gz -C ~/workspace/dist .
             ssh ${USER_HOST} '
-            rm -Rf /var/www/intra/source/client/build;
-            rm -Rf ~/apps/intra/front/build;
-            mkdir ~/apps/intra/front/build;'
+            rm -Rf ~/apps/api/scheduling/workspace;
+            mkdir ~/apps/api/scheduling/workspace;'
 
-            scp -r /tmp/dist.tar.gz ${USER_HOST}:~/apps/intra/front/build/dist.tar.gz
+            scp -r /tmp/dist.tar.gz ${USER_HOST}:~/apps/api/scheduling/workspace/dist.tar.gz
             ssh ${USER_HOST} '
-            cd ~/apps/intra/front/build;
+            cd ~/apps/api/scheduling/workspace;
             tar -xzf ./dist.tar.gz;
-            rm -Rf ./dist.tar.gz;
-            cd ~;
-            cd ..;
-            cp -r ~/apps/intra/front/build/ /var/www/intra/source/client/build/;'
+            rm -Rf ./dist.tar.gz;'
             
 workflows:
   version: 2
